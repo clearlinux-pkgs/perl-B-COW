@@ -4,13 +4,14 @@
 #
 Name     : perl-B-COW
 Version  : 0.001
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.001.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.001.tar.gz
 Summary  : 'B::COW additional B helpers to check COW status'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
-Requires: perl-B-COW-data = %{version}-%{release}
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-B-COW-license = %{version}-%{release}
+Requires: perl-B-COW-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -18,23 +19,31 @@ This archive contains the distribution B-COW,
 version 0.001:
 B::COW additional B helpers to check COW status
 
-%package data
-Summary: data components for the perl-B-COW package.
-Group: Data
-
-%description data
-data components for the perl-B-COW package.
-
-
 %package dev
 Summary: dev components for the perl-B-COW package.
 Group: Development
-Requires: perl-B-COW-data = %{version}-%{release}
 Provides: perl-B-COW-devel = %{version}-%{release}
 Requires: perl-B-COW = %{version}-%{release}
 
 %description dev
 dev components for the perl-B-COW package.
+
+
+%package license
+Summary: license components for the perl-B-COW package.
+Group: Default
+
+%description license
+license components for the perl-B-COW package.
+
+
+%package perl
+Summary: perl components for the perl-B-COW package.
+Group: Default
+Requires: perl-B-COW = %{version}-%{release}
+
+%description perl
+perl components for the perl-B-COW package.
 
 
 %prep
@@ -62,6 +71,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-B-COW
+cp %{_builddir}/B-COW-0.001/LICENSE %{buildroot}/usr/share/package-licenses/perl-B-COW/dd4e29f997e82e723b165d30ec39001443a74f4d
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -75,11 +86,15 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files
 %defattr(-,root,root,-)
 
-%files data
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/B/COW.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/B/COW/COW.so
-
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/B::COW.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-B-COW/dd4e29f997e82e723b165d30ec39001443a74f4d
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/B/COW.pm
+/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/B/COW/COW.so
