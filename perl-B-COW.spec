@@ -4,7 +4,7 @@
 #
 Name     : perl-B-COW
 Version  : 0.004
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.004.tar.gz
 Summary  : 'B::COW additional B helpers to check COW status'
@@ -97,5 +97,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/B/COW.pm
-/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/B/COW/COW.so
+/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/B/COW.pm
+/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/B/COW/COW.so
