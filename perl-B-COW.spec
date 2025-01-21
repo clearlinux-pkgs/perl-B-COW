@@ -4,7 +4,7 @@
 #
 Name     : perl-B-COW
 Version  : 0.007
-Release  : 24
+Release  : 25
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.007.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-0.007.tar.gz
 Summary  : 'B::COW additional B helpers to check COW status'
